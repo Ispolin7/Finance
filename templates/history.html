@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+
+<div class= "result">{{bad}}</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Symbol</th>
+      <th scope="col">Shares</th>
+      <th scope="col">Price</th>
+      <th scope="col">Operation</th>
+      <th scope="col">Transacted</th>
+    </tr>
+  </thead>
+  <tbody>
+
+      {% for history in operations %}
+      <tr>
+          <td>{{history.stock}}</td>
+          <td>{{history.number}}</td>
+          <td>{{"%.2f"|format(history.price)}}</td>
+          <td>{{history.type}}</td>
+          <td>{{history.time}}</td>
+        </tr>
+      {% endfor %}
+
+  </tbody>
+
+{% endblock %}

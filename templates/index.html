@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Start page
+{% endblock %}
+
+{% block main %}
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Symbol</th>
+      <th scope="col">Shares</th>
+      <th scope="col">Price</th>
+      <th scope="col">Curent Price</th>
+      <th scope="col">Total</th>
+      <th scope="col">Result</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for stock in data %}
+      <tr>
+          <td>{{stock.stock}}</td>
+          <td>{{stock.number}}</td>
+          <td>{{"%.2f"|format(stock.price)}}</td>
+          <td>{{"%.2f"|format(stock.curent_price)}}</td>
+          <td>{{ "%.2f"|format(stock.curent_price * stock.number)}}</td>
+          <td>{{ "%.2f"|format((stock.curent_price - stock.price)* stock.number) }}</td>
+        </tr>
+      {% endfor %}
+      <tr>
+          <td colspan = "5">Cash</td>
+          <td>{{"%.2f"|format(cash)}}</td>
+      </tr>
+      <tr>
+          <td colspan = "5"></td>
+          <td><b>{{"%.2f"|format(total)}}</b></td>
+      </tr>
+
+
+  </tbody>
+
+{% endblock %}

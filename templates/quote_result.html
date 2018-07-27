@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote Result
+{% endblock %}
+
+{% block main %}
+    <div class ="result">
+        Текущая цена {{result.symbol}} - {{"%.2f"|format(result.price)}} $
+    </div>
+{% endblock %}
